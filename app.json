@@ -1,0 +1,8 @@
+{
+  "android": {
+    "package": "com.fiser.demobetterauth"
+  },
+  "ios": {
+    "bundleIdentifier": "com.fiser.demobetterauth"
+  }
+}

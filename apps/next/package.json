@@ -13,9 +13,11 @@
   "dependencies": {
     "@tamagui/config": "^1.129.12",
     "@tamagui/next-theme": "^1.129.12",
+    "@types/jsonwebtoken": "^9.0.10",
     "app": "0.0.0",
     "better-auth": "^1.2.12",
     "better-sqlite3": "^12.2.0",
+    "jsonwebtoken": "^9.0.2",
     "next": "14.2.14",
     "raf": "^3.4.1",
     "react": "19.0.0",

@@ -37,8 +37,12 @@
     "@tamagui/cli": "^1.129.12",
     "check-dependency-version-consistency": "^4.1.0",
     "eslint": "^9.3.0",
+    "expo": "~53.0.17",
+    "expo-dev-client": "~5.2.4",
     "husky": "^9.1.6",
     "prettier": "^3.3.3",
+    "react": "19.0.0",
+    "react-native": "0.79.5",
     "turbo": "^1.13.4",
     "typescript": "~5.8.3",
     "ultra-runner": "^3.10.5",
@@ -51,5 +55,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.3"
-  }
+  },
+  "version": "1.0.0"
 }
