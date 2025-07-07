@@ -1,0 +1,37 @@
+services:
+  pafe-portal:
+    container_name: pafe-portal
+    restart: always
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    env_file: .docker.env
+    volumes:
+      - pafe_node_modules_vol:/app/node_modules:delegated
+      - pafe_next_build_vol:/app/apps/web/.next:delegated
+    depends_on:
+      - db
+    networks:
+      - outside
+    
+  db:
+    container_name: db
+    image: postgres:17-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - ./.docker/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=devsecret
+      - POSTGRES_USER=pafe_user
+      - POSTGRES_DB=db
+    networks:
+      - outside
+
+volumes:
+  pafe_node_modules_vol:
+  pafe_next_build_vol:
+
+networks:
+  outside:

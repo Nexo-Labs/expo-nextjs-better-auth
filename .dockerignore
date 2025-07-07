@@ -1,0 +1,17 @@
+node_modules/*
+build/*
+.turbo
+dist/*
+volumes/*
+out/*
+.next/*
+**/node_modules
+.env
+.env.local
+**/.env
+**/.env.local
+**/.next
+**/Dockerfile
+Dockerfile
+.docker/
+.git/

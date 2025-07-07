@@ -1,14 +1,13 @@
 'use client'
 
 import { authClient } from '../lib/auth.client'
-import { Button } from '@my/ui'
 
 export default function Login({ mode = 'signin' }: { mode?: 'signin' | 'signup' }) {
 
   return (
     <div className="min-h-[100dvh] flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <Button
-        onPress={async () => {
+      <button
+        onClick={async () => {
           await authClient.signIn.social({
             provider: 'google',
             callbackURL: '/dashboard',
@@ -23,7 +22,7 @@ export default function Login({ mode = 'signin' }: { mode?: 'signin' | 'signup' 
           ></path>
         </svg>
         Continue with Google
-      </Button>
+      </button>
     </div>
   )
 }

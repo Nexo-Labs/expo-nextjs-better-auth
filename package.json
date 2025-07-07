@@ -1,60 +1,31 @@
 {
-  "name": "demo-better-auth",
+  "name": "pafe-app",
   "private": true,
-  "workspaces": [
-    "./apps/*",
-    "./packages/*"
-  ],
+  "version": "1.0.0",
+  "description": "",
+  "packageManager": "yarn@1.22.22",
   "scripts": {
-    "native": "cd apps/expo && yarn start",
-    "native:prebuild": "cd apps/expo && yarn prebuild",
-    "ios": "cd apps/expo && yarn ios",
-    "android": "cd apps/expo && yarn android",
-    "watch": "ultra -r --no-pretty --concurrency 400 watch",
-    "vercel:install": "yarn set version 3.5 && yarn install",
-    "web": "yarn build && cd apps/next && yarn next",
-    "web:extract": "DISABLE_EXTRACTION=false yarn workspace next-app dev",
-    "web:prod": "yarn workspace next-app build",
-    "web:prod:serve": "yarn workspace next-app serve",
-    "postinstall": "yarn check-tamagui && yarn build",
-    "build": "yarn workspaces foreach --all --exclude next-app run build",
-    "upgrade:tamagui": "yarn up '*tamagui*'@latest '@tamagui/*'@latest",
-    "upgrade:tamagui:canary": "yarn up '*tamagui*'@canary '@tamagui/*'@canary",
-    "check-tamagui": "tamagui check",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "prepare": "husky"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "turbo run build --continue",
+    "build:web": "turbo run build --filter=web",
+    "start": "turbo run start",
+    "start:web": "turbo run start --filter=web",
+    "dev": "turbo run dev --parallel",
+    "dev:web": "turbo run dev --filter=web",
+    "native": "cd apps/pafe-app && yarn start",
+    "web": "cd apps/next && yarn dev",
+    "clean": "git clean -fdx && yarn install",
+    "clean:turbo": "rm -rf ./node_modules/.cache/turbo"
   },
-  "resolutions": {
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "react-refresh": "^0.14.0",
-    "react-native-svg": "15.11.2",
-    "react-native-web": "~0.19.12"
-  },
-  "dependencies": {
-    "@babel/runtime": "^7.24.6",
-    "@tamagui/cli": "^1.129.12",
-    "check-dependency-version-consistency": "^4.1.0",
-    "eslint": "^9.3.0",
-    "expo": "~53.0.17",
-    "expo-dev-client": "~5.2.4",
-    "husky": "^9.1.6",
-    "prettier": "^3.3.3",
-    "react": "19.0.0",
-    "react-native": "0.79.5",
-    "turbo": "^1.13.4",
-    "typescript": "~5.8.3",
-    "ultra-runner": "^3.10.5",
-    "vitest": "^2.1.1"
-  },
-  "packageManager": "yarn@4.5.0",
-  "engines": {
-    "node": "22",
-    "npm": "10.8"
-  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "devDependencies": {
-    "@biomejs/biome": "^1.9.3"
+    "husky": "^9.1.7",
+    "turbo": "^2.4.0"
   },
-  "version": "1.0.0"
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

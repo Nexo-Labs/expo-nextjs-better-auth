@@ -1,15 +1,29 @@
 {
-  "$schema": "https://turborepo.org/schema.json",
-  "globalEnv": ["DISABLE_EXTRACTION", "NODE_ENV", "EAS_BUILD_PLATFORM"],
-  "pipeline": {
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["PAYLOAD_SECRET", "DATABASE_URL"],
+  "tasks": {
     "build": {
-      "env": ["DISABLE_EXTRACTION", "NODE_ENV", "EAS_BUILD_PLATFORM"],
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "build/**", "node_modules/.cache/metro/**"]
+      "inputs": ["$TURBO_DEFAULT", ".env*"],
+      "outputs": [".turbo/**", ".next/**", ".vercel/**", "build/**"]
+    },
+    "lint": {},
+    "devcontainer": {
+      "cache": false,
+      "persistent": true
     },
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "start": {
+      "dependsOn": ["^build"]
+    },
+    "storybook": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": [],
+      "outputs": []
     }
   }
 }

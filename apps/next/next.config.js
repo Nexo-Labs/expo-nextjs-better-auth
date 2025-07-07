@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-const { withTamagui } = require('@tamagui/next-plugin')
 const { join } = require('node:path')
 
 const boolVals = {
@@ -9,25 +8,6 @@ const boolVals = {
 
 const disableExtraction =
   boolVals[process.env.DISABLE_EXTRACTION] ?? process.env.NODE_ENV === 'development'
-
-const plugins = [
-  withTamagui({
-    config: '../../packages/config/src/tamagui.config.ts',
-    components: ['tamagui', '@my/ui'],
-    appDir: true,
-    importsWhitelist: ['constants.js', 'colors.js'],
-    outputCSS: process.env.NODE_ENV === 'production' ? './public/tamagui.css' : null,
-    logTimings: true,
-    disableExtraction,
-    shouldExtract: (path) => {
-      if (path.includes(join('packages', 'app'))) {
-        return true
-      }
-    },
-    disableThemesBundleOptimize: true,
-    excludeReactNativeWebExports: ['Switch', 'ProgressBar', 'Picker', 'CheckBox', 'Touchable'],
-  }),
-]
 
 module.exports = () => {
   /** @type {import('next').NextConfig} */
@@ -47,12 +27,6 @@ module.exports = () => {
     },
   }
 
-  for (const plugin of plugins) {
-    config = {
-      ...config,
-      ...plugin(config),
-    }
-  }
 
   return config
 }
